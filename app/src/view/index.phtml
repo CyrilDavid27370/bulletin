@@ -1,0 +1,19 @@
+<?php $title = 'Accueil'; ?>
+
+<?php ob_start() ?>
+<h1>Liste des élèves</h1>
+
+<ul>
+    <?php foreach ($users as $user) { ?>
+      
+      <li>
+        <?= ucfirst(htmlspecialchars($user->getFirstname())) ?> 
+        <?= ucfirst(htmlspecialchars($user->getLastname())) ?>
+      </li>
+
+      <?php } ?>
+</ul>
+
+<?php $content = ob_get_clean() ?>
+
+<?php require 'src/view/base.phtml';
