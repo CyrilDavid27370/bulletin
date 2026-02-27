@@ -1,0 +1,25 @@
+<?php $title = 'Remplissage du bulletin'; ?>
+
+<?php ob_start() ?>
+<h1>Remplir le bulletin</h1>
+<form action="?route=add" method="post">
+    <input type="hidden" name="id_user" value="<?= $id ?>">
+    
+    <label for="comment">Commentaire :</label><br><br>
+    <textarea name="comment" id="comment" rows="8" cols="50"></textarea>
+
+    <p>Mention :</p>
+    <label><input type="radio" name="mention" value="Avertissement">Avertissement</label>
+    <label><input type="radio" name="mention" value="Encouragements">Encouragements</label>
+    <label><input type="radio" name="mention" value="Felicitations">Félicitations</label><br><br>
+    
+    <input type="submit" value="Enregistrer">
+</form>
+
+<br>
+
+<a href="/index.php?route=show&id=<?= $id ?>">Retour à l'élève</a>
+
+<?php $content = ob_get_clean() ?>
+
+<?php require 'src/view/base.phtml';

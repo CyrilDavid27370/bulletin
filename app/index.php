@@ -10,10 +10,12 @@ if(isset($_GET['route'])) {
     $route ='index';
 }
 
+$bulletinController = new BulletinController();
+
 if ($route === 'index') {
-    $bulletinController = new BulletinController();
     $bulletinController->index();
 } elseif ($route === 'show') {
-    $bulletinController = new BulletinController();
     $bulletinController->show();
+} elseif ($route === 'add') {
+    $bulletinController->add();
 }

@@ -2,7 +2,7 @@
 
 namespace Notes\App\Entity;
 
-Class Note 
+class Note 
 {
   private $id;
   private $subject;

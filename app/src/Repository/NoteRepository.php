@@ -5,7 +5,7 @@ namespace Notes\App\Repository;
 use Notes\App\Entity\Note;
 use PDO;
 
-Class NoteRepository extends Repository
+class NoteRepository extends Repository
 {
   public function findByUser($id)
   {

@@ -14,7 +14,6 @@ class Repository
     'mysql:host=mysql;dbname=bulletin;charset=utf8',
     'user',
     'pwd',
-    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]
 );
     }
 }

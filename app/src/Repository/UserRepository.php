@@ -5,7 +5,7 @@ use Notes\App\Entity\User;
 use Notes\App\Entity\Note;
 use PDO;
 
-Class UserRepository extends Repository
+class UserRepository extends Repository
 {
   public function findAll()
   {
