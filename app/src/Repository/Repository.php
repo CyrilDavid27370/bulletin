@@ -10,6 +10,11 @@ class Repository
 
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:host=mysql;dbname=bulletin', 'user', 'pwd');
+    $this->pdo = new PDO(
+    'mysql:host=mysql;dbname=bulletin;charset=utf8',
+    'user',
+    'pwd',
+    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]
+);
     }
 }

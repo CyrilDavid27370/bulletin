@@ -1,7 +1,7 @@
 <?php $title = 'Accueil'; ?>
 
 <?php ob_start() ?>
-<h1>Liste des élèves</h1>
+<h1>Classe</h1>
 
 <ul>
     <?php foreach ($users as $user) { ?>
@@ -9,6 +9,7 @@
       <li>
         <?= ucfirst(htmlspecialchars($user->getFirstname())) ?> 
         <?= ucfirst(htmlspecialchars($user->getLastname())) ?>
+        <a href="?route=show&id=<?= $user->getId() ?>">📒</a>
       </li>
 
       <?php } ?>

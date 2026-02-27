@@ -2,6 +2,7 @@
 
 namespace Notes\App\Repository;
 use Notes\App\Entity\User;
+use Notes\App\Entity\Note;
 use PDO;
 
 Class UserRepository extends Repository
@@ -15,4 +16,6 @@ Class UserRepository extends Repository
 
     return $users;
   }
+
+  
 }

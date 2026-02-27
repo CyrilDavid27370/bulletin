@@ -1,0 +1,25 @@
+<?php $title = "Notes de l'élève" ?>
+
+<?php ob_start() ?>
+<h1>    
+  
+    <?= ucfirst(htmlspecialchars($notes[0]->getFirstname())) ?> 
+    <?= ucfirst(htmlspecialchars($notes[0]->getLastname())) ?>
+
+</h1>
+    <ul>
+
+    <?php foreach ($notes as $note) { ?>
+      
+      <li><?= $note->getSubject() ?> : <?= $note->getResult() ?></li>
+
+      <?php } ?>
+    
+    </ul>
+
+    <a href="?route=add&id=<?= $notes[0]->getIdUser() ?>">Remplir le bulletin</a>
+    <a href="?route=index">Retour à la classe</a>
+
+<?php $content = ob_get_clean() ?>
+
+<?php require 'src/view/base.phtml';
