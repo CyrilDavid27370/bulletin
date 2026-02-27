@@ -9,7 +9,7 @@ class NoteRepository extends Repository
 {
   public function findByUser($id)
   {
-    $sql = "SELECT user.firstname, user.lastname, note.subject, note.result 
+    $sql = "SELECT user.firstname, user.lastname, note.subject, note.result, note.id_user 
     FROM note 
     JOIN user ON note.id_user = user.id 
     WHERE user.id = :id";

@@ -24,14 +24,18 @@ class BulletinController
     }
     $noteRepo = new NoteRepository();
     $notes = $noteRepo->findByUser($id);
+
+    $appreciationRepo = new AppreciationRepository();
+    $appreciation = $appreciationRepo->findByUser($id);
+    
     require('src/view/show.phtml');
   }
 
   public function add()
   {
     
-    $id = (int)($_GET['id'] ?? 0);
-
+    $id = !empty($_POST) ? (int)$_POST['id_user'] : (int)($_GET['id'] ?? 0);
+    
     if (!empty($_POST)) {
       $appreciationRepo = new AppreciationRepository();
       $appreciationRepo->add($_POST);

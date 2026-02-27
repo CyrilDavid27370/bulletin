@@ -17,7 +17,26 @@
     
     </ul>
 
-    <a href="?route=add&id=<?= $notes[0]->getId_user() ?>">Remplir le bulletin</a><br><br>
+    <?php if ($appreciation) { ?>
+
+    <fieldset>
+        <legend>Commentaire</legend>
+            <p><?= htmlspecialchars($appreciation->getComment()) ?></p>
+
+        <?php if ($appreciation->getMention()) { ?>
+            <p><strong><?= htmlspecialchars($appreciation->getMention()) ?></strong></p>
+        <?php } ?>
+            <a href="?route=edit&id=<?= $appreciation->getId() ?>">✏️</a>
+            <a href="?route=delete&id=<?= $appreciation->getId() ?>">❌</a>
+    </fieldset>
+    <?php } ?>
+
+    <?php if (!$appreciation) { ?>
+
+    <a href="?route=add&id=<?= $notes[0]->getIdUser() ?>">Remplir le bulletin</a><br><br>
+    
+    <?php } ?>
+    
     <a href="?route=index">Retour à la classe</a>
 
 <?php $content = ob_get_clean() ?>

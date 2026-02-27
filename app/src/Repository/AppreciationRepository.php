@@ -13,8 +13,20 @@ class AppreciationRepository extends Repository
     $request = $this->pdo->prepare($sql);
     return $request->execute([
       'comment' => $data['comment'],
-      'mention' => $data['mention'],
+      'mention' => $data['mention'] ?? null,
       'id_user' => $data['id_user'],
     ]);
   }
+
+  public function findByUser($id)
+  {
+    $sql = "SELECT * FROM appreciation WHERE id_user = :id";
+    $request = $this->pdo->prepare($sql);
+    $request->execute(['id' => $id]);
+    $request->setFetchMode(PDO::FETCH_CLASS, Appreciation::class);
+    $appreciation = $request->fetch();
+    return $appreciation;
+  }
 }
+
+
