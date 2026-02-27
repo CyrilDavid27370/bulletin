@@ -18,4 +18,6 @@ if ($route === 'index') {
     $bulletinController->show();
 } elseif ($route === 'add') {
     $bulletinController->add();
+} elseif ($route === 'delete') {
+    $bulletinController->delete();
 }

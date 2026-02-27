@@ -27,6 +27,12 @@ class AppreciationRepository extends Repository
     $appreciation = $request->fetch();
     return $appreciation;
   }
+  
+  public function delete($id) {
+    $sql = "DELETE FROM appreciation WHERE id = :id";
+    $request = $this->pdo->prepare($sql);
+    $request->execute(['id' => $id]);
+  }
 }
 
 

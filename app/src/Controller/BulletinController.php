@@ -47,4 +47,15 @@ class BulletinController
     require('src/view/add.phtml');
   }
 
+  public function delete() 
+  {
+    $id = (int)($_GET['id'] ?? 0);
+    $id_user = (int)($_GET['id_user'] ?? 0);
+    
+    $appreciationRepo = new AppreciationRepository();
+    $appreciationRepo->delete($id);
+    
+    header('Location: /index.php?route=show&id=' . $id_user);
+    exit;
+  }
 }

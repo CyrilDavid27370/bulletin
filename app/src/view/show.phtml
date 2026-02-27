@@ -27,7 +27,7 @@
             <p><strong><?= htmlspecialchars($appreciation->getMention()) ?></strong></p>
         <?php } ?>
             <a href="?route=edit&id=<?= $appreciation->getId() ?>">✏️</a>
-            <a href="?route=delete&id=<?= $appreciation->getId() ?>">❌</a>
+            <a href="?route=delete&id=<?= $appreciation->getId() ?>&id_user=<?= $appreciation->getIdUser() ?>">❌</a>
     </fieldset>
     <?php } ?>
 
