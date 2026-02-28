@@ -20,4 +20,6 @@ if ($route === 'index') {
     $bulletinController->add();
 } elseif ($route === 'delete') {
     $bulletinController->delete();
+} elseif ($route === 'update') {
+    $bulletinController->update();
 }

@@ -7,10 +7,20 @@ use Notes\App\Repository\AppreciationRepository;
 
 class BulletinController
 { 
+  private $userRepo;
+  private $noteRepo;
+  private $appreciationRepo;
+
+  public function __construct()
+  {
+      $this->userRepo = new UserRepository;
+      $this->noteRepo = new NoteRepository;
+      $this->appreciationRepo = new AppreciationRepository;
+  }
   public function index()
   {
-    $userRepo = new UserRepository();
-    $users = $userRepo->findAll();
+
+    $users =  $this->userRepo->findAll();
 
     require('src/view/index.phtml');
   }
@@ -22,11 +32,9 @@ class BulletinController
       header('Location: /index.php');
       exit;
     }
-    $noteRepo = new NoteRepository();
-    $notes = $noteRepo->findByUser($id);
+    $notes = $this->noteRepo->findByUser($id);
 
-    $appreciationRepo = new AppreciationRepository();
-    $appreciation = $appreciationRepo->findByUser($id);
+    $appreciation = $this->appreciationRepo->findByUser($id);
     
     require('src/view/show.phtml');
   }
@@ -37,8 +45,8 @@ class BulletinController
     $id = !empty($_POST) ? (int)$_POST['id_user'] : (int)($_GET['id'] ?? 0);
     
     if (!empty($_POST)) {
-      $appreciationRepo = new AppreciationRepository();
-      $appreciationRepo->add($_POST);
+  
+      $this->appreciationRepo->add($_POST);
 
       header('Location: /index.php?route=show&id=' . (int)$_POST['id_user']);
       exit;
@@ -52,10 +60,25 @@ class BulletinController
     $id = (int)($_GET['id'] ?? 0);
     $id_user = (int)($_GET['id_user'] ?? 0);
     
-    $appreciationRepo = new AppreciationRepository();
-    $appreciationRepo->delete($id);
+    $this->appreciationRepo->delete($id);
     
     header('Location: /index.php?route=show&id=' . $id_user);
     exit;
+  }
+
+  public function update()
+  {
+    $id = !empty($_POST) ? (int)$_POST['id'] : (int)($_GET['id'] ?? 0);
+    
+    if (!empty($_POST)) {
+  
+      $this->appreciationRepo->update($_POST);
+
+      header('Location: /index.php?route=show&id=' . (int)$_POST['id_user']);
+      exit;
+    }
+    $appreciation = $this->appreciationRepo->findById($id);
+    
+    require('src/view/update.phtml');
   }
 }
